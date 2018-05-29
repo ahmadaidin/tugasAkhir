@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<SplitPane fx:id="masterPane" dividerPositions="0.7591973244147158" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="720.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="usingOpenCV.Controller">
+    <items>
+        <ScrollPane fx:id="imagePane" prefHeight="500.0" prefWidth="748.0">
+            <content>
+                <ImageView fx:id="imageView" fitHeight="279.0" fitWidth="749.0" pickOnBounds="true" preserveRatio="true" />
+            </content>
+        </ScrollPane>
+        <VBox prefHeight="224.0" prefWidth="598.0">
+            <children>
+                <HBox alignment="CENTER" prefHeight="62.0" prefWidth="598.0">
+                <children>
+                    <Button mnemonicParsing="false" onAction="#addImage" prefHeight="31.0" prefWidth="118.0" text="Merge Image">
+                        <HBox.margin>
+                            <Insets left="10.0" />
+                        </HBox.margin></Button>
+                    <Button mnemonicParsing="false" onAction="#changeImage" prefHeight="31.0" prefWidth="130.0" text="Change Image">
+                        <HBox.margin>
+                            <Insets left="10.0" />
+                        </HBox.margin></Button>
+                    <Button fx:id="resetImageButton" mnemonicParsing="false" onAction="#resetImage" prefHeight="31.0" prefWidth="118.0" text="Reset Image">
+                        <HBox.margin>
+                            <Insets left="10.0" />
+                        </HBox.margin></Button>
+                        <Button mnemonicParsing="false" onAction="#undo" prefHeight="31.0" prefWidth="130.0" text="Undo">
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin></Button>
+                        <Button fx:id="undoButton" mnemonicParsing="false" onAction="#redo" prefHeight="31.0" prefWidth="118.0" text="Redo">
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin></Button>
+
+                </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <CheckBox fx:id="detectEdgeBox" mnemonicParsing="false" onAction="#edgeDetectSelected" prefHeight="21.0" prefWidth="142.0" text="Canny Edge">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </CheckBox>
+                  <Label text="Threshold">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Slider fx:id="threshold" disable="true" prefHeight="45.0" prefWidth="507.0" showTickLabels="true" showTickMarks="true">
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                  </Slider>
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="126.0" prefHeight="126.0" prefWidth="598.0">
+               <children>
+                  <Button fx:id="robertBtn" mnemonicParsing="false" onAction="#robert" text="Robert">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="sobelBtn" mnemonicParsing="false" onAction="#sobel" text="Sobel">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin></Button>
+                  <Button fx:id="prewittBtn" mnemonicParsing="false" onAction="#prewitt" text="Prewitt">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="freiChenBtn" mnemonicParsing="false" onAction="#freiChen" text="Frei Chen">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="robin3Btn" mnemonicParsing="false" onAction="#robinson3" text="Robin 3">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="rob5Btn" mnemonicParsing="false" onAction="#robinson5" text="Robin 5">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="krischbtn" mnemonicParsing="false" onAction="#krisch" text="Krisch">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="prewittCompassBtn" mnemonicParsing="false" onAction="#prewittCompass" text="Prewitt8">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+                <HBox alignment="CENTER" prefHeight="126.0" prefWidth="598.0">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <children>
+                   <Button fx:id="erodeBtn" mnemonicParsing="false" onAction="#erode" text="Erode" />
+                   <Button fx:id="dilateBtn" mnemonicParsing="false" onAction="#dilate" text="Dilate">
+                       <HBox.margin>
+                           <Insets left="10.0" />
+                       </HBox.margin>
+                   </Button>
+                   <Button fx:id="teethButton" mnemonicParsing="false" onAction="#getTeethCandidate" text="Get Teeth">
+                       <HBox.margin>
+                           <Insets left="10.0" />
+                       </HBox.margin>
+                   </Button>
+                   <TextField fx:id="numCluster" prefHeight="31.0" prefWidth="70.0" text="2">
+                       <HBox.margin>
+                           <Insets left="10.0" />
+                       </HBox.margin>
+                   </TextField>
+                   <Button fx:id="clusterBtn" mnemonicParsing="false" onAction="#clusterImage" text="Cluster">
+                       <HBox.margin>
+                           <Insets left="10.0" />
+                       </HBox.margin>
+                   </Button>
+                   <Button fx:id="prevClusterBtn" mnemonicParsing="false" onAction="#prevCluster" text="prev">
+                       <HBox.margin>
+                           <Insets left="10.0" />
+                       </HBox.margin>
+                   </Button>
+                   <Button fx:id="nextClusterBtn" mnemonicParsing="false" onAction="#nextCluster" text="next">
+                       <HBox.margin>
+                           <Insets left="10.0" />
+                       </HBox.margin>
+                   </Button>
+
+               </children>
+                </HBox>
+            <HBox alignment="CENTER" prefHeight="126.0" prefWidth="598.0">
+               <children>
+                  <Button fx:id="horizonBtn" mnemonicParsing="false" onAction="#getHorizontalLine" text="Horizon" />
+                  <Button fx:id="matchBtn" mnemonicParsing="false" onAction="#dilate" text="Dilate">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="teethButton1" mnemonicParsing="false" onAction="#getTeethCandidate" text="Get Teeth">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="clusterBtn1" mnemonicParsing="false" onAction="#clusterImage" text="Cluster">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="prevClusterBtn1" mnemonicParsing="false" onAction="#prevCluster" text="prev">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="nextClusterBtn1" mnemonicParsing="false" onAction="#nextCluster" text="next">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+            </children>
+        </VBox>
+    </items>
+</SplitPane>
